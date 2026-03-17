@@ -151,44 +151,30 @@
             <div class="form-group">
                 <label for="report_type" class="agent-question">报告类型</label>
                 <select name="report_type" id="report_type" class="form-control highlight-connection" required>
-                    <option value="research_report">Summary - Short and fast (~2 min)</option>
-                    <option value="detailed_report">Detailed - In depth and longer (~5 min)</option>
-                    <option value="resource_report">Resource Report</option>
-                    <option value="deep">Deep Research</option>
+                    <option value="research_report">摘要报告 - 简短快速（约 2 分钟）</option>
+                    <option value="detailed_report">详细报告 - 深度全面（约 5 分钟）</option>
+                    <option value="resource_report">资源报告</option>
+                    <option value="deep">深度研究</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="tone" class="agent-question">报告语气</label>
                 <select name="tone" id="tone" class="form-control highlight-connection" required>
-                    <option value="Objective">Objective - Impartial and unbiased presentation of facts and findings
-                    </option>
-                    <option value="Formal">Formal - Adheres to academic standards with sophisticated language and
-                        structure</option>
-                    <option value="Analytical">Analytical - Critical evaluation and detailed examination of data and
-                        theories</option>
-                    <option value="Persuasive">Persuasive - Convincing the audience of a particular viewpoint or
-                        argument</option>
-                    <option value="Informative">Informative - Providing clear and comprehensive information on a topic
-                    </option>
-                    <option value="Explanatory">Explanatory - Clarifying complex concepts and processes</option>
-                    <option value="Descriptive">Descriptive - Detailed depiction of phenomena, experiments, or case
-                        studies</option>
-                    <option value="Critical">Critical - Judging the validity and relevance of the research and its
-                        conclusions</option>
-                    <option value="Comparative">Comparative - Juxtaposing different theories, data, or methods to
-                        highlight differences and similarities</option>
-                    <option value="Speculative">Speculative - Exploring hypotheses and potential implications or future
-                        research directions</option>
-                    <option value="Reflective">Reflective - Considering the research process and personal insights or
-                        experiences</option>
-                    <option value="Narrative">Narrative - Telling a story to illustrate research findings or
-                        methodologies</option>
-                    <option value="Humorous">Humorous - Light-hearted and engaging, usually to make the content more
-                        relatable</option>
-                    <option value="Optimistic">Optimistic - Highlighting positive findings and potential benefits
-                    </option>
-                    <option value="Pessimistic">Pessimistic - Focusing on limitations, challenges, or negative outcomes
-                    </option>
+                    <option value="Objective">客观 - 公正呈现事实与研究发现</option>
+                    <option value="Formal">正式 - 遵循学术规范，语言严谨</option>
+                    <option value="Analytical">分析 - 批判性评估，深度检验数据与理论</option>
+                    <option value="Persuasive">说服 - 论证特定观点，打动读者</option>
+                    <option value="Informative">信息 - 清晰全面地传递主题信息</option>
+                    <option value="Explanatory">解释 - 阐明复杂概念与流程</option>
+                    <option value="Descriptive">描述 - 详细描绘现象、实验或案例</option>
+                    <option value="Critical">批判 - 评判研究的有效性与相关性</option>
+                    <option value="Comparative">比较 - 对比不同理论、数据或方法</option>
+                    <option value="Speculative">推测 - 探索假设及未来研究方向</option>
+                    <option value="Reflective">反思 - 审视研究过程与个人见解</option>
+                    <option value="Narrative">叙事 - 以故事形式呈现研究发现</option>
+                    <option value="Humorous">幽默 - 轻松有趣，增强内容亲和力</option>
+                    <option value="Optimistic">乐观 - 突出积极发现与潜在收益</option>
+                    <option value="Pessimistic">悲观 - 聚焦局限性、挑战与负面结果</option>
                 </select>
             </div>
             <div class="form-group">
@@ -233,34 +219,34 @@
                     
                     <div id="mcpConfigSection" class="mcp-config-section" style="display: none;">
                         <div class="mcp-presets">
-                            <label class="form-label">Quick Presets</label>
+                            <label class="form-label">快速预设</label>
                             <div class="preset-buttons">
                                 <button type="button" class="btn btn-outline-secondary btn-sm preset-btn" data-preset="github">
                                     <i class="fab fa-github"></i> GitHub
                                 </button>
                                 <button type="button" class="btn btn-outline-secondary btn-sm preset-btn" data-preset="tavily">
-                                    <i class="fas fa-search"></i> Tavily Web Search
+                                    <i class="fas fa-search"></i> Tavily 网络搜索
                                 </button>
                                 <button type="button" class="btn btn-outline-secondary btn-sm preset-btn" data-preset="filesystem">
-                                    <i class="fas fa-folder"></i> Local Files
+                                    <i class="fas fa-folder"></i> 本地文件
                                 </button>
                             </div>
-                            <small class="text-muted">Click a preset to add pre-configured MCP servers to the JSON below</small>
+                            <small class="text-muted">点击预设自动填充下方 JSON 配置</small>
                         </div>
 
                         <div class="mcp-config-group">
-                            <label for="mcpConfig" class="form-label">MCP Servers Configuration</label>
-                            <textarea id="mcpConfig" name="mcp_config" class="form-control mcp-config-textarea" rows="8" placeholder="Paste your MCP servers configuration as JSON array...">[]</textarea>
+                            <label for="mcpConfig" class="form-label">MCP 服务器配置</label>
+                            <textarea id="mcpConfig" name="mcp_config" class="form-control mcp-config-textarea" rows="8" placeholder="粘贴 MCP 服务器配置（JSON 数组格式）...">[]</textarea>
                             <div class="mcp-config-status">
-                                <span id="mcpConfigStatus" class="mcp-status-text">Valid JSON ✓</span>
+                                <span id="mcpConfigStatus" class="mcp-status-text">JSON 格式正确 ✓</span>
                                 <button type="button" id="mcpFormatBtn" class="btn btn-sm btn-secondary">
-                                    <i class="fas fa-code"></i> Format JSON
+                                    <i class="fas fa-code"></i> 格式化 JSON
                                 </button>
                             </div>
                             <small class="text-muted">
-                                Paste your MCP servers configuration as a JSON array. Each server should have properties like 
-                                <code>name</code>, <code>command</code>, <code>args</code>, and optional <code>env</code> variables.
-                                <a href="#" id="mcpExampleLink">See example →</a>
+                                以 JSON 数组形式粘贴 MCP 服务器配置，每个服务器需包含
+                                <code>name</code>、<code>command</code>、<code>args</code> 等字段，以及可选的 <code>env</code> 变量。
+                                <a href="#" id="mcpExampleLink">查看示例 →</a>
                             </small>
                         </div>
                     </div>
