@@ -980,6 +980,8 @@ const GPTResearcher = (() => {
           .filter((domain) => domain.length > 0);
       }
 
+      const custom_prompt = (document.getElementById('custom_prompt')?.value || '').trim()
+
       const requestData = {
         task: task,
         report_type: report_type,
@@ -989,6 +991,7 @@ const GPTResearcher = (() => {
         agent: agent,
         query_domains: query_domains,
         max_search_results: parseInt(document.getElementById('maxSearchResults').value, 10) || 5,
+        custom_prompt: custom_prompt,
       }
 
       // Add MCP configuration if enabled

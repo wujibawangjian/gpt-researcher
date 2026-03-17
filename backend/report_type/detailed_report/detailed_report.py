@@ -25,6 +25,7 @@ class DetailedReport:
         mcp_configs=None,
         mcp_strategy=None,
         max_search_results=None,
+        custom_prompt: str = "",
     ):
         self.query = query
         self.report_type = report_type
@@ -39,6 +40,7 @@ class DetailedReport:
         self.headers = headers or {}
         self.complement_source_urls = complement_source_urls
         self.max_search_results = max_search_results
+        self.custom_prompt = custom_prompt
         
         # Generate a unique research ID for this report
         self.research_id = self._generate_research_id(query)
@@ -165,6 +167,7 @@ class DetailedReport:
         subtopic_report = await subtopic_assistant.write_report(
             existing_headers=self.existing_headers,
             relevant_written_contents=relevant_contents,
+            custom_prompt=self.custom_prompt,
         )
 
         self.global_written_sections.extend(self.gpt_researcher.extract_sections(subtopic_report))

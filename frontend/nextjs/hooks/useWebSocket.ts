@@ -72,20 +72,21 @@ export const useWebSocket = (
         
         const domainFilters = JSON.parse(localStorage.getItem('domainFilters') || '[]');
         const domains = domainFilters ? domainFilters.map((domain: any) => domain.value) : [];
-        const { report_type, report_source, tone, mcp_enabled, mcp_configs, mcp_strategy } = chatBoxSettings;
-        
+        const { report_type, report_source, tone, mcp_enabled, mcp_configs, mcp_strategy, custom_prompt } = chatBoxSettings;
+
         // Start a new research
         try {
           console.log(`Starting new research for: ${promptValue}`);
-          const dataToSend = { 
+          const dataToSend = {
             task: promptValue,
-            report_type, 
-            report_source, 
+            report_type,
+            report_source,
             tone,
             query_domains: domains,
             mcp_enabled: mcp_enabled || false,
             mcp_strategy: mcp_strategy || "fast",
-            mcp_configs: mcp_configs || []
+            mcp_configs: mcp_configs || [],
+            custom_prompt: custom_prompt || "",
           };
           
           // Make sure we have a properly formatted command with a space after start

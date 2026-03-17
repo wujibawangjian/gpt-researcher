@@ -929,6 +929,8 @@ export default function Home() {
                 promptValue={promptValue}
                 setPromptValue={setPromptValue}
                 handleDisplayResult={handleDisplayResult}
+                chatBoxSettings={chatBoxSettings}
+                setChatBoxSettings={setChatBoxSettings}
               />
             </>
           )

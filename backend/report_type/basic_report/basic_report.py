@@ -22,6 +22,7 @@ class BasicReport:
         mcp_configs=None,
         mcp_strategy=None,
         max_search_results=None,
+        custom_prompt: str = "",
     ):
         self.query = query
         self.query_domains = query_domains
@@ -33,6 +34,7 @@ class BasicReport:
         self.config_path = config_path
         self.websocket = websocket
         self.headers = headers or {}
+        self.custom_prompt = custom_prompt
         
         # Generate a unique research ID for this report
         self.research_id = self._generate_research_id(query)
@@ -71,5 +73,5 @@ class BasicReport:
 
     async def run(self):
         await self.gpt_researcher.conduct_research()
-        report = await self.gpt_researcher.write_report()
+        report = await self.gpt_researcher.write_report(custom_prompt=self.custom_prompt)
         return report

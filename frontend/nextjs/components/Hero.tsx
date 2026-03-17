@@ -2,20 +2,26 @@ import Image from "next/image";
 import React, { FC, useEffect, useState, useRef } from "react";
 import InputArea from "./ResearchBlocks/elements/InputArea";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChatBoxSettings } from "@/types/data";
 
 type THeroProps = {
   promptValue: string;
   setPromptValue: React.Dispatch<React.SetStateAction<string>>;
   handleDisplayResult: (query : string) => void;
+  chatBoxSettings?: ChatBoxSettings;
+  setChatBoxSettings?: React.Dispatch<React.SetStateAction<ChatBoxSettings>>;
 };
 
 const Hero: FC<THeroProps> = ({
   promptValue,
   setPromptValue,
   handleDisplayResult,
+  chatBoxSettings,
+  setChatBoxSettings,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [showGradient, setShowGradient] = useState(true);
+  const [showCustomPrompt, setShowCustomPrompt] = useState(false);
   const particlesContainerRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
@@ -136,6 +142,29 @@ const Hero: FC<THeroProps> = ({
             </div>
           </div>
           
+          {/* Custom prompt (optional) */}
+          {setChatBoxSettings && (
+            <motion.div variants={fadeInUp} transition={{ duration: 0.6, delay: 0.25 }} className="mt-3 px-1">
+              <button
+                type="button"
+                onClick={() => setShowCustomPrompt(v => !v)}
+                className="text-sm text-gray-400 hover:text-teal-400 transition-colors duration-200 flex items-center gap-1"
+              >
+                <span>{showCustomPrompt ? '▾' : '▸'}</span>
+                Custom instructions <span className="text-gray-500">(optional)</span>
+              </button>
+              {showCustomPrompt && (
+                <textarea
+                  value={chatBoxSettings?.custom_prompt || ""}
+                  onChange={(e) => setChatBoxSettings(prev => ({ ...prev, custom_prompt: e.target.value }))}
+                  placeholder="Add extra instructions for the report (e.g. 'Focus on recent data, use bullet points')"
+                  rows={3}
+                  className="mt-2 w-full rounded-lg border border-gray-700/60 bg-gray-900/80 text-gray-300 placeholder-gray-500 text-sm px-3 py-2 outline-none focus:border-teal-500/50 resize-none"
+                />
+              )}
+            </motion.div>
+          )}
+
           {/* Disclaimer text */}
           <motion.div
             variants={fadeInUp}
