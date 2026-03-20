@@ -7,7 +7,7 @@ the appropriate research agent based on the query type.
 import json
 import logging
 import re
-
+# We use json_repair to attempt to fix malformed JSON responses from the LLM
 import json_repair
 
 from ..prompts import PromptFamily
